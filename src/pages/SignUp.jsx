@@ -4,7 +4,9 @@ import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase
 import { db } from '../firebase.config'
 import { Link, useNavigate } from 'react-router-dom'
 import { ReactComponent as ArrowRightIcon } from '../assets/svg/keyboardArrowRightIcon.svg'
+import { toast } from 'react-toastify'
 import visibilityIcon from '../assets/svg/visibilityIcon.svg'
+import 'react-toastify/dist/ReactToastify.css'
 
 const SignUp = () => {
     const [showPassword, setShowPassword] = useState(false)
@@ -46,7 +48,7 @@ const SignUp = () => {
 
             navigate('/')
         } catch (error) {
-            console.log(error)
+            toast.error('Something went wrong')
         }
     }
 

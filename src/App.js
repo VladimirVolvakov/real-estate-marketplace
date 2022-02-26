@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 import Explore from './pages/Explore'
 import ForgotPassword from './pages/ForgotPassword'
 import Navbar from './components/Navbar'
@@ -22,6 +23,18 @@ function App() {
         </Routes>
         <Navbar />
       </Router>
+
+      <ToastContainer
+        position='top-center'
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   )
 }
