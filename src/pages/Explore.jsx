@@ -22,7 +22,7 @@ const Explore = () => {
                         />
                         <p className='exploreCategoryName'>Real estate for rent</p>
                     </Link>
-                    <Link to='/category/sell'>
+                    <Link to='/category/sale'>
                         <img 
                             alt='Sell' 
                             className='exploreCategoryImg' 
