@@ -39,7 +39,7 @@ const Navbar = () => {
                         <p 
                             className={ pathMatchRoute('/offers') ? 'navbarListItemNameActive' : 'navbarListItemName' }
                         >
-                            Offer
+                            Offers
                         </p>
                     </li>
 
