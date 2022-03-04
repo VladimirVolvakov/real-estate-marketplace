@@ -4,6 +4,8 @@ import { toast } from 'react-toastify'
 import { updateDoc,doc } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import arrowRight from '../assets/svg/keyboardArrowRightIcon.svg'
+import homeIcon from '../assets/svg/homeIcon.svg'
 
 const Profile = () => {
     const auth = getAuth()
@@ -89,6 +91,22 @@ const Profile = () => {
                         />
                     </form>
                 </div>
+
+                <Link 
+                    className='createListing'
+                    to='/create-listing'
+                >
+                    <img 
+                        alt='Home'
+                        src={ homeIcon } 
+                    />
+                    <p>Sell or rent your home</p>
+
+                    <img 
+                        alt='Arrow right'
+                        src={ arrowRight } 
+                    />
+                </Link>
             </main>
         </div>
     )
