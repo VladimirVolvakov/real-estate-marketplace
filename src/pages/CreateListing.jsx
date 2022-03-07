@@ -1,7 +1,10 @@
+import { db } from '../firebase.config'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage'
 import { toast } from 'react-toastify'
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { v4 as uuidv4 } from 'uuid'
 import Spinner from '../components/Spinner'
 
 const CreateListing = () => {
@@ -20,7 +23,7 @@ const CreateListing = () => {
         latitude: 0,
         longitude: 0
     })
-    const [geolocationEnabled, setGeolocationEnabled] = useState(true)
+    const [geolocationEnabled, setGeolocationEnabled] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
 
     const { type, name, bedrooms, bathrooms, parking, furnished, address, offer, regularPrice, discountedPrice, images, latitude, longitude } = formData
@@ -117,6 +120,55 @@ const CreateListing = () => {
             geolocation.lng = longitude
             location = address
         }
+
+        // Store an image in Firebase:
+        const storeImage = async (image) => {
+            return new Promise((resolve, reject) => {
+                const storage = getStorage()
+                const fileName = `${auth.currentUser.uid}-${image.name}-${uuidv4()}`
+
+                const storageRef = ref(storage, 'images/' + fileName)
+
+                const uploadTask = uploadBytesResumable(storageRef, image)
+
+                uploadTask.on('state_changed', 
+                    (snapshot) => {
+                        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                        console.log('Upload is ' + progress + '% done')
+                        // eslint-disable-next-line default-case
+                        switch (snapshot.state) {
+                            case 'paused':
+                                console.log('Upload is paused')
+                                break
+                            case 'running':
+                                console.log('Upload is running')
+                                break
+                        }
+                    }, 
+                    (error) => {
+                        reject(error)
+                    }, 
+                    () => {
+                        // Handle successful uploads on complete:
+                        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                            resolve(downloadURL)
+                        })
+                    }
+                )
+            })
+        }
+
+        // Store all images:
+        const imgUrls = await Promise.all(
+            [...images].map(image => storeImage(image))
+        )
+            .catch(() => {
+                setIsLoading(false)
+                toast.error('Images are not uploaded...')
+                return
+            })
+        
+        console.log(imgUrls)
 
         setIsLoading(false)
     }
