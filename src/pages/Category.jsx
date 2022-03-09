@@ -52,27 +52,27 @@ const Category = () => {
         <div className='category'>
             <header>
                 <p className='pageHeader'>
-                    { params.categoryName === 'rent' 
+                    {params.categoryName === 'rent' 
                         ? 'Real estate for rent' 
                         : 'Real estate for sale' 
                     }
                 </p>
             </header>
 
-            { isLoading
+            {isLoading
                 ? <Spinner />
                 : listings && listings.length > 0
                     ? (
                         <>
                             <main>
                                 <ul className='categoryListings'>
-                                    { listings.map(listing => (
+                                    {listings.map(listing => (
                                         <ListingItem 
-                                            id={ listing.id }
-                                            key={ listing.id }
-                                            listing={ listing.data } 
+                                            id={listing.id}
+                                            key={listing.id}
+                                            listing={listing.data} 
                                         />
-                                    )) }
+                                    ))}
                                 </ul>
                             </main>
                         </>

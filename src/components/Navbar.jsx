@@ -24,7 +24,7 @@ const Navbar = () => {
                             height='36px' 
                         />
                         <p 
-                            className={ pathMatchRoute('/') ? 'navbarListItemNameActive' : 'navbarListItemName' }
+                            className={pathMatchRoute('/') ? 'navbarListItemNameActive' : 'navbarListItemName'}
                         >
                             Explore
                         </p>
@@ -32,12 +32,12 @@ const Navbar = () => {
 
                     <li className='navbarListItem' onClick={() => navigate('/offers')}>
                         <OfferIcon 
-                            fill={ pathMatchRoute('/offers') ? '#2c2c2c' : '#8f8f8f'} 
+                            fill={pathMatchRoute('/offers') ? '#2c2c2c' : '#8f8f8f'} 
                             width='36px' 
                             height='36px' 
                         />
                         <p 
-                            className={ pathMatchRoute('/offers') ? 'navbarListItemNameActive' : 'navbarListItemName' }
+                            className={pathMatchRoute('/offers') ? 'navbarListItemNameActive' : 'navbarListItemName'}
                         >
                             Offers
                         </p>
@@ -45,12 +45,12 @@ const Navbar = () => {
 
                     <li className='navbarListItem' onClick={() => navigate('/profile')}>
                         <PersonOutlineIcon 
-                            fill={ pathMatchRoute('/profile') ? '#2c2c2c' : '#8f8f8f'} 
+                            fill={pathMatchRoute('/profile') ? '#2c2c2c' : '#8f8f8f'} 
                             width='36px' 
                             height='36px' 
                         />
                         <p
-                            className={ pathMatchRoute('/profile') ? 'navbarListItemNameActive' : 'navbarListItemName' }
+                            className={pathMatchRoute('/profile') ? 'navbarListItemNameActive' : 'navbarListItemName'}
                         >
                             Profile
                         </p>

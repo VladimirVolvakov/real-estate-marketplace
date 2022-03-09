@@ -1,3 +1,4 @@
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { db } from '../firebase.config'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage'
@@ -101,7 +102,7 @@ const CreateListing = () => {
         let location
 
         if (geolocationEnabled) {
-            const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${ address }&key=${ process.env.REACT_APP_GEOCODE_API_KEY }`)
+            const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GEOCODE_API_KEY}`)
 
             const data = await response.json()
 
@@ -118,7 +119,6 @@ const CreateListing = () => {
         } else {
             geolocation.lat = latitude
             geolocation.lng = longitude
-            location = address
         }
 
         // Store an image in Firebase:
@@ -168,9 +168,28 @@ const CreateListing = () => {
                 return
             })
         
-        console.log(imgUrls)
+        // Get all the entered data to an object
+        const formDataCopy = {
+            ...formData,
+            imgUrls,
+            geolocation,
+            timestamp: serverTimestamp()
+        }
+
+        // Delete excessive data from an object:
+        formDataCopy.location = address
+        delete formDataCopy.images
+        delete formDataCopy.address
+        !formDataCopy.offer && delete formDataCopy.discountedPrice
+
+        // Add object to Firestore:
+        const docRef = await addDoc(collection(db, 'listings'), formDataCopy)
 
         setIsLoading(false)
+
+        // Tell the user about operation success and navigate to new listing:
+        toast.success('Your real estate object saved')
+        navigate(`/category/${formDataCopy.type}/${docRef.id}`)
     }
 
     if (isLoading) {

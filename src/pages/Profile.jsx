@@ -17,7 +17,7 @@ const Profile = () => {
         email: auth.currentUser.email
     })
 
-    const { name, email } = formData
+    const {name, email} = formData
 
     const navigate = useNavigate()
 
@@ -56,38 +56,38 @@ const Profile = () => {
         <div className='profile'>
             <header className='profileHeader'>
                 <p className='pageHeader'>My Profile</p>
-                <button className='logOut' onClick={ onLogout } type='button'>Log Out</button>
+                <button className='logOut' onClick={onLogout} type='button'>Log Out</button>
             </header>
 
             <main>
                 <div className='profileDetailsHeader'>
                     <p className='profileDetailsText'>Personal Details</p>
-                    <p className='changePersonalDetails' onClick={ () => {
+                    <p className='changePersonalDetails' onClick={() => {
                         changeDetails && onSubmit()
                         setChangeDetails(prevState => !prevState)
                     }}>
-                        { changeDetails ? 'Done' : 'Change' }
+                        {changeDetails ? 'Done' : 'Change'}
                     </p>
                 </div>
 
                 <div className='profileCard'>
                     <form>
                         <input 
-                            className={ changeDetails ? 'profileNameActive' : 'profileName' } 
-                            disabled={ !changeDetails } 
+                            className={changeDetails ? 'profileNameActive' : 'profileName'} 
+                            disabled={!changeDetails} 
                             id='name'
-                            onChange={ onChange }
+                            onChange={onChange}
                             type='text' 
-                            value={ name }
+                            value={name}
                         />
 
                         <input 
-                            className={ changeDetails ? 'profileEmailActive' : 'profileEmail' } 
-                            disabled={ !changeDetails } 
+                            className={changeDetails ? 'profileEmailActive' : 'profileEmail'} 
+                            disabled={!changeDetails} 
                             id='email'
-                            onChange={ onChange }
+                            onChange={onChange}
                             type='text' 
-                            value={ email }
+                            value={email}
                         />
                     </form>
                 </div>
@@ -98,13 +98,13 @@ const Profile = () => {
                 >
                     <img 
                         alt='Home'
-                        src={ homeIcon } 
+                        src={homeIcon} 
                     />
                     <p>Sell or rent your home</p>
 
                     <img 
                         alt='Arrow right'
-                        src={ arrowRight } 
+                        src={arrowRight} 
                     />
                 </Link>
             </main>

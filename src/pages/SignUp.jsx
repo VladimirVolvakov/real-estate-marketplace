@@ -16,7 +16,7 @@ const SignUp = () => {
         email: '',
         password: ''
     })
-    const { name, email, password } = formData
+    const {name, email, password} = formData
 
     const navigate = useNavigate()
 
@@ -41,7 +41,7 @@ const SignUp = () => {
                 displayName: name
             })
 
-            const formDataCopy = { ...formData }
+            const formDataCopy = {...formData}
             delete formDataCopy.password
             formDataCopy.timestamp = serverTimestamp()
 
@@ -67,36 +67,36 @@ const SignUp = () => {
                         <input 
                             className='nameInput' 
                             id='name'
-                            onChange={ onChange }
+                            onChange={onChange}
                             placeholder='Enter your name' 
                             type='text' 
-                            value={ name }
+                            value={name}
                         />
                         
                         <input 
                             className='emailInput' 
                             id='email'
-                            onChange={ onChange }
+                            onChange={onChange}
                             placeholder='Enter your email' 
                             type='email' 
-                            value={ email }
+                            value={email}
                         />
 
                         <div className='passwordInputDiv'>
                             <input 
                                 className='passwordInput'
                                 id='password'
-                                onChange={ onChange }
+                                onChange={onChange}
                                 placeholder='Enter your password'
-                                type={ showPassword ? 'text' : 'password' } 
-                                value={ password}
+                                type={showPassword ? 'text' : 'password'} 
+                                value={password}
                             />
 
                             <img 
                                 alt='Show password' 
                                 className='showPassword'
                                 onClick={() => setShowPassword(!showPassword)}
-                                src={ visibilityIcon }  
+                                src={visibilityIcon}  
                             />
                         </div>
 

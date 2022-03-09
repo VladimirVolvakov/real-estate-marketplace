@@ -8,25 +8,25 @@ const ListingItem = ({ listing, id, onDelete }) => {
         <li className='categoryListing'>
             <Link 
                 className='categoryListingLink'
-                to={ `/category/${ listing.type }/${ id }` }
+                to={ `/category/${listing.type}/${id}` }
             >
                 <img 
-                    alt={ listing.name } 
+                    alt={listing.name} 
                     className='categoryListingImg' 
-                    src={ listing.imageUrls[0] } 
+                    src={listing.imageUrls[0]} 
                 />
 
                 <div className='categoryListingDetails'>
                     <p className='categoryListingLocation'>
-                        { listing.location }
+                        {listing.location}
                     </p>
 
                     <p className='categoryListingName'>
-                        { listing.name }
+                        {listing.name}
                     </p>
 
                     <p className='categoryListingPrice'>
-                        ${ listing.offer 
+                        ${listing.offer 
                             ? listing.discountedPrice 
                                 .toString()
                                 .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
@@ -34,21 +34,21 @@ const ListingItem = ({ listing, id, onDelete }) => {
                                 .toString()
                                 .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                         }
-                        { listing.type === 'rent' && ' / month'}
+                        {listing.type === 'rent' && ' / month'}
                     </p>
 
                     <div className='categoryListingInfoDiv'>
-                        <img alt='bed' src={ bedIcon } />
+                        <img alt='bed' src={bedIcon} />
                         <p className='categoryListingInfoText'>
-                            { listing.bedrooms > 1
+                            {listing.bedrooms > 1
                                 ? `${listing.bedrooms} bedrooms`
                                 : '1 bedroom'
                             }
                         </p>
 
-                        <img alt='bath' src={ bathtubIcon } />
+                        <img alt='bath' src={bathtubIcon} />
                         <p className='categoryListingInfoText'>
-                            { listing.bathrooms > 1
+                            {listing.bathrooms > 1
                                 ? `${listing.bathrooms} bathrooms`
                                 : '1 bathroom'
                             }
@@ -57,13 +57,13 @@ const ListingItem = ({ listing, id, onDelete }) => {
                 </div>
             </Link>
 
-            { onDelete && (
+            {onDelete && (
                 <DeleteIcon 
                     className='removeIcon' 
                     fill='rgb(231, 76, 60)' 
-                    onClick={ () => onDelete(listing.id, listing.name) }
+                    onClick={() => onDelete(listing.id, listing.name)}
                 />
-            ) }
+            )}
         </li>
     )
 }

@@ -56,18 +56,18 @@ const Offer = () => {
                 </p>
             </header>
 
-            { isLoading
+            {isLoading
                 ? <Spinner />
                 : listings && listings.length > 0
                     ? (
                         <>
                             <main>
                                 <ul className='categoryListings'>
-                                    { listings.map(listing => (
+                                    {listings.map(listing => (
                                         <ListingItem 
-                                            id={ listing.id }
-                                            key={ listing.id }
-                                            listing={ listing.data } 
+                                            id={listing.id}
+                                            key={listing.id}
+                                            listing={listing.data} 
                                         />
                                     )) }
                                 </ul>

@@ -30,11 +30,11 @@ const ForgotPassword = () => {
             </header>
 
             <main>
-                <form onSubmit={ onSubmit }>
+                <form onSubmit={onSubmit}>
                     <input 
                         className='emailInput' 
                         id='email' 
-                        onChange={ onChange }
+                        onChange={onChange}
                         placeholder='Enter your email' 
                         type='email' 
                         value={email} 

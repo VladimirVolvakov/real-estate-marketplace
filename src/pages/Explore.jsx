@@ -18,7 +18,7 @@ const Explore = () => {
                         <img 
                             alt='Rent' 
                             className='exploreCategoryImg' 
-                            src={ rentCategoryImage } 
+                            src={rentCategoryImage} 
                         />
                         <p className='exploreCategoryName'>Real estate for rent</p>
                     </Link>
@@ -26,7 +26,7 @@ const Explore = () => {
                         <img 
                             alt='Sell' 
                             className='exploreCategoryImg' 
-                            src={ sellCategoryImage } 
+                            src={sellCategoryImage} 
                         />
                         <p className='exploreCategoryName'>Real estate for sale</p>
                     </Link>

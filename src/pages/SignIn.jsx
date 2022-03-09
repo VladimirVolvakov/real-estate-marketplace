@@ -13,7 +13,7 @@ const SignIn = () => {
         email: '',
         password: ''
     })
-    const { email, password } = formData
+    const {email, password} = formData
 
     const navigate = useNavigate()
 
@@ -54,10 +54,10 @@ const SignIn = () => {
                         <input 
                             className='emailInput' 
                             id='email'
-                            onChange={ onChange }
+                            onChange={onChange}
                             placeholder='Enter your email' 
                             type='email' 
-                            value={ email }
+                            value={email}
                         />
 
                         <div className='passwordInputDiv'>
@@ -67,14 +67,14 @@ const SignIn = () => {
                                 onChange={ onChange }
                                 placeholder='Enter your password'
                                 type={ showPassword ? 'text' : 'password' } 
-                                value={ password}
+                                value={password}
                             />
 
                             <img 
                                 alt='Show password' 
                                 className='showPassword'
                                 onClick={() => setShowPassword(!showPassword)}
-                                src={ visibilityIcon }  
+                                src={visibilityIcon}  
                             />
                         </div>
 
