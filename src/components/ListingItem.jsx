@@ -13,7 +13,7 @@ const ListingItem = ({ listing, id, onDelete }) => {
                 <img 
                     alt={listing.name} 
                     className='categoryListingImg' 
-                    src={listing.imageUrls[0]} 
+                    src={listing.imgUrls[0]} 
                 />
 
                 <div className='categoryListingDetails'>

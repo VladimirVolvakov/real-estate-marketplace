@@ -24,7 +24,7 @@ const CreateListing = () => {
         latitude: 0,
         longitude: 0
     })
-    const [geolocationEnabled, setGeolocationEnabled] = useState(false)
+    const [geolocationEnabled, setGeolocationEnabled] = useState(true)
     const [isLoading, setIsLoading] = useState(false)
 
     const { type, name, bedrooms, bathrooms, parking, furnished, address, offer, regularPrice, discountedPrice, images, latitude, longitude } = formData
@@ -90,7 +90,7 @@ const CreateListing = () => {
             return
         }
 
-        // Check the number if downloaded images:
+        // Check the number of downloaded images:
         if (images.length > 6) {
             setIsLoading(false)
             toast.error('Max 6 images can be downloaded')
@@ -102,7 +102,7 @@ const CreateListing = () => {
         let location
 
         if (geolocationEnabled) {
-            const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GEOCODE_API_KEY}`)
+            const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyBJ5VIlVjaeP2qDuPi7Q8jSmvnB8UiKdII`)
 
             const data = await response.json()
 
