@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import Category from './pages/Category'
+import Contact from './pages/Contact'
 import CreateListing from './pages/CreateListing'
 import Explore from './pages/Explore'
 import ForgotPassword from './pages/ForgotPassword'
@@ -23,6 +24,7 @@ function App() {
           <Route path='/offers' element={<Offer />} />
           <Route path='/category/:categoryName' element={<Category />} />
           <Route path='/category/:categoryName/:listingId' element={<Listing />} />
+          <Route path='/contact/:landlordId' element={<Contact />} />
           <Route path='/profile' element={<PrivateRoute />}>
             <Route path='/profile' element={<Profile />} />
           </Route>
