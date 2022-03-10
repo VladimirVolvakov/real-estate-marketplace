@@ -60,9 +60,8 @@ const Category = () => {
             </header>
 
             {isLoading
-                ? <Spinner />
-                : listings && listings.length > 0
-                    ? (
+                ? (<Spinner />)
+                : listings && listings.length > 0 ? (
                         <>
                             <main>
                                 <ul className='categoryListings'>
@@ -77,7 +76,7 @@ const Category = () => {
                             </main>
                         </>
                     )
-                    : <p>No results found for {params.categoryName}</p>
+                    : (<p>No results found for {params.categoryName}</p>)
             }
         </div>
     )

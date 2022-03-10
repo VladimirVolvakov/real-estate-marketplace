@@ -102,7 +102,7 @@ const CreateListing = () => {
         let location
 
         if (geolocationEnabled) {
-            const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyBJ5VIlVjaeP2qDuPi7Q8jSmvnB8UiKdII`)
+            const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GEOCODE_API_KEY}`)
 
             const data = await response.json()
 
@@ -135,13 +135,14 @@ const CreateListing = () => {
                     (snapshot) => {
                         const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
                         console.log('Upload is ' + progress + '% done')
-                        // eslint-disable-next-line default-case
                         switch (snapshot.state) {
                             case 'paused':
                                 console.log('Upload is paused')
                                 break
                             case 'running':
                                 console.log('Upload is running')
+                                break
+                            default:
                                 break
                         }
                     }, 
@@ -204,7 +205,7 @@ const CreateListing = () => {
 
             <main>
                 <form onSubmit={ onSubmit }>
-                    <label className='formLabel'>Sell / Rent</label>
+                    <label className='formLabel'>Type</label>
                     <div className='formButtons'>
                         <button 
                             className={ type === 'sale' ? 'formButtonActive' : 'formButton' } 
@@ -391,6 +392,7 @@ const CreateListing = () => {
                         type='number'
                         value={ regularPrice }
                     />
+                    
                     { type === 'rent' && (
                         <p className='formPriceText'>$ / month</p>
                     ) }
@@ -399,16 +401,22 @@ const CreateListing = () => {
                 { offer && (
                     <>
                         <label className='formLabel'>Discounted price</label>
-                        <input 
-                            className='formInputSmall' 
-                            id='discountedPrice'
-                            max='75000000'
-                            min='50'
-                            onChange={ onMutate }
-                            required={ offer }
-                            type='number'
-                            value={ discountedPrice }
-                        />
+                        <div className='formPriceDiv'>
+                            <input 
+                                className='formInputSmall' 
+                                id='discountedPrice'
+                                max='75000000'
+                                min='50'
+                                onChange={ onMutate }
+                                required={ offer }
+                                type='number'
+                                value={ discountedPrice }
+                            />
+                       
+                            { type === 'rent' && (
+                                <p className='formPriceText'>$ / month</p>
+                            ) }
+                        </div>
                     </>
                 ) }
 

@@ -8,7 +8,7 @@ const ListingItem = ({ listing, id, onDelete }) => {
         <li className='categoryListing'>
             <Link 
                 className='categoryListingLink'
-                to={ `/category/${listing.type}/${id}` }
+                to={`/category/${listing.type}/${id}`}
             >
                 <img 
                     alt={listing.name} 

@@ -12,6 +12,7 @@ import PrivateRoute from './components/PrivateRoute'
 import Profile from './pages/Profile'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 function App() {
