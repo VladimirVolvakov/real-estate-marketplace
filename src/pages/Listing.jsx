@@ -102,7 +102,23 @@ const Listing = () => {
 
                 <p className='listingLocationTitle'>Location</p>
 
-                {/* Map */}
+                <div className='leafletContainer'>
+                    <MapContainer 
+                        center={[listing.geolocation.lat, listing.geolocation.lng]} 
+                        scrollWheelZoom={false} 
+                        style={{height: '100%', width: '100%'}} 
+                        zoom={13}
+                    >
+                        <TileLayer 
+                            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                            url='https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png'
+                        />
+
+                        <Marker position={[listing.geolocation.lat, listing.geolocation.lng]}>
+                            <Popup>{listing.location}</Popup>
+                        </Marker>
+                    </MapContainer>
+                </div>
 
                 { auth.currentUser?.uid !== listing.userRef && (
                     <Link className='primaryButton' to={`/contact/${listing.userRef}?listingName=S{listing.name}`}>
