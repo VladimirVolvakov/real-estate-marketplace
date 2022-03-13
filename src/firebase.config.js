@@ -2,7 +2,7 @@
 import { getFirestore } from 'firebase/firestore'
 import { initializeApp } from 'firebase/app'
 
-// Your web app's Firebase configuration
+// Your web app Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCKccDIIscnbaTWwF-o00BblgbhOH0wNsk",
   authDomain: "real-estate-marketplace-d133f.firebaseapp.com",
@@ -13,5 +13,5 @@ const firebaseConfig = {
 }
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig)
+initializeApp(firebaseConfig)
 export const db = getFirestore()

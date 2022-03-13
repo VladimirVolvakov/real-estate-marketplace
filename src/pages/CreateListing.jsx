@@ -24,6 +24,7 @@ const CreateListing = () => {
         latitude: 0,
         longitude: 0
     })
+    // eslint-disable-next-line
     const [geolocationEnabled, setGeolocationEnabled] = useState(true)
     const [isLoading, setIsLoading] = useState(false)
 
