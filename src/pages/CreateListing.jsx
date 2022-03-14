@@ -25,7 +25,7 @@ const CreateListing = () => {
         longitude: 0
     })
     // eslint-disable-next-line
-    const [geolocationEnabled, setGeolocationEnabled] = useState(true)
+    const [geolocationEnabled, setGeolocationEnabled] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
 
     const { type, name, bedrooms, bathrooms, parking, furnished, address, offer, regularPrice, discountedPrice, images, latitude, longitude } = formData
